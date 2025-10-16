@@ -1,3 +1,5 @@
+import random
+
 
 # colors from the project
 old_colors = {
@@ -30,14 +32,33 @@ def select_test_colors(color):
 
 class colorTest:
 
-    def __init__(self, color, ):
+    def __init__(self, color, source):
         self.color = color
+        self.source = source  # 'old' or 'new' to tell which dataset it comes from
         self.color_options = select_test_colors(color)  # possible colors to choose from
         self.chosen_color = None  # color that was chosen by user
         self.time = None  # time taken to pick this color
 
 
     def __str__(self):
-        return f"{self.color},{self.color_options},{self.chosen_color},{self.time}"  # csv separated string for logging
+        return f"{self.source},{hex(self.color)},{self.color_options},{self.chosen_color},{self.time}"  # csv separated string for logging
+
+
+test_colors = []
+test_per_color = 7  # TODO: Confirm this number for the correct amount of testing samples (turnn into runtime arg to modify as necessary?)
+
+for key, value in old_colors.items():
+    for i in range(test_per_color):
+        test_colors.append(colorTest(value, 'old'))
+
+for key, value in new_colors.items():
+    for i in range(test_per_color):
+        test_colors.append(colorTest(value, 'new'))
+
+
+random.shuffle(test_colors)  # shuffle so we can avoid bias in testing order
+
+for test in test_colors:
+    print(test)
 
 
