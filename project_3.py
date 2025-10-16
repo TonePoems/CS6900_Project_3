@@ -26,8 +26,11 @@ new_colors = {
 
 # call this function to get an array of hex colors to test against
 def select_test_colors(color):
+    color_list = [color]  # have to include the correct color
 
-    return []  # TODO: write logic for returning an array of hex colors to display against the passed color value
+    # TODO: write logic for returning an array of hex colors to display against the passed color value
+
+    return color_list  
 
 
 class colorTest:
