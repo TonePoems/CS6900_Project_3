@@ -25,25 +25,35 @@ new_colors = {
 }
 
 
-# call this function to get an array of hex colors to test against
-def select_test_colors(color):
-    color_list = [color]  # have to include the correct color
-
-    # TODO: write logic for returning an array of hex colors to display against the passed color value
-
-    color_list = random.shuffle(color_list)  # shuffle to avoid testing bias
-    return  color_list  
-
-
 class colorTest:
 
     def __init__(self, color, hex, source):
         self.color = color  # keys in color dicts
         self.hex = hex  # values in color dicts
         self.source = source  # 'old' or 'new' to tell which dataset it comes from
-        self.color_options = select_test_colors(color)  # possible colors to choose from
+        self.color_options = self.select_test_colors()  # possible colors to choose from
         self.chosen_color = None  # color that was chosen by user
         self.time = None  # time taken to pick this color
+
+
+    # call this function to get an array of hex colors to test against
+    def select_test_colors(self):
+        color_list = []  # list of color options 
+
+        # Add old and new versions of this color
+        color_list.append(old_colors[self.color])
+        color_list.append(new_colors[self.color])
+        
+        # Select randomly between old and new versions of the other colors
+        for key in old_colors:
+            if not key == self.color:
+                if random.randint(0, 1) == 0:
+                   color_list.append(old_colors[key])
+                else:
+                   color_list.append(new_colors[key])
+
+        color_list = random.shuffle(color_list)  # shuffle to avoid testing bias
+        return  color_list  
 
 
     def __str__(self):
