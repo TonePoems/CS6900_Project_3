@@ -37,8 +37,9 @@ def select_test_colors(color):
 
 class colorTest:
 
-    def __init__(self, color, source):
-        self.color = color
+    def __init__(self, color, hex, source):
+        self.color = color  # keys in color dicts
+        self.hex = hex  # values in color dicts
         self.source = source  # 'old' or 'new' to tell which dataset it comes from
         self.color_options = select_test_colors(color)  # possible colors to choose from
         self.chosen_color = None  # color that was chosen by user
@@ -46,7 +47,8 @@ class colorTest:
 
 
     def __str__(self):
-        return f"{self.source},{hex(self.color)},{self.color_options},{self.chosen_color},{self.time}"  # csv separated string for logging
+        return f"{self.source},{self.color},{hex(self.hex)},{self.color_options},{self.chosen_color},{self.time}"  # csv separated string for logging
+
 
 
 if __name__ == '__main__':
@@ -62,11 +64,11 @@ if __name__ == '__main__':
 
     for key, value in old_colors.items():
         for i in range(test_per_color):
-            test_colors.append(colorTest(value, 'old'))
+            test_colors.append(colorTest(key, value, 'old'))
 
     for key, value in new_colors.items():
         for i in range(test_per_color):
-            test_colors.append(colorTest(value, 'new'))
+            test_colors.append(colorTest(key, value, 'new'))
 
 
     random.shuffle(test_colors)  # shuffle so we can avoid bias in testing order
