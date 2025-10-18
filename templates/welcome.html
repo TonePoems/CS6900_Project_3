@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome - Color Test</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        h1 {
+            font-size: 3em;
+            color: #333;
+        }
+        p {
+            font-size: 1.2em;
+            color: #555;
+            max-width: 600px;
+            line-height: 1.6;
+        }
+        
+        /* Styles for the form */
+        .start-form {
+            margin-top: 30px;
+        }
+        .form-label {
+            display: block;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .form-input {
+            padding: 10px 15px;
+            font-size: 1.1em;
+            border-radius: 5px;
+            border: 2px solid #ccc;
+            width: 300px;
+            text-align: center;
+        }
+
+        .start-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+        .start-button:hover {
+            background-color: #0056b3;
+        }
+
+        /*Style for error messages */
+        .flash-error {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 10px 20px;
+            border: 1px solid #f5c6cb;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                {% if category == 'error' %}
+                    <div classclass="flash-error">{{ message }}</div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <h1>Welcome to the Color Test</h1>
+    <p>
+        You will be shown a series of color palettes and a target color name.
+        Please click the color square that you believe matches the name.
+        Your speed and accuracy will be recorded.
+    </p>
+
+    <form class="start-form" action="/" method="POST">
+        <label for="participant_id" class="form-label">
+            Please enter your Name or ID:
+        </label>
+        <input type="text" id="participant_id" name="participant_id" 
+               class="form-input" required autofocus>
+        
+        <button type="submit" class="start-button">Start Test</button>
+    </form>
+    
+</body>
+</html>

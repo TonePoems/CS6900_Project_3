@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test Complete</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        h1 {
+            font-size: 3em;
+            color: #333;
+        }
+        p {
+            font-size: 1.2em;
+            color: #555;
+            margin-bottom: 30px;
+        }
+        /* !!! NEW: Style for the "test next" link */
+        .next-link {
+            display: inline-block;
+            padding: 12px 24px;
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #007bff;
+            border: 2px solid #007bff;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .next-link:hover {
+            background-color: #007bff;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <h1>✅ Test Complete!</h1>
+    <p>
+        Thank you, <strong>{{ participant_name }}</strong>. 
+        All data has been saved to <strong>results.csv</strong>.
+    </p>
+
+    <a href="/" class="next-link">Test Next Participant</a>
+</body>
+</html>
