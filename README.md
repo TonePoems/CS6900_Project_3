@@ -16,19 +16,30 @@ The app flow is as follows:
 6.  A "Test Complete" screen is shown at the end.
 
 ## File Structure
-├── app.py # The main Flask server and all backend logic ├── results.csv # (Auto-generated) The file where all data is saved ├── templates/ │ ├── welcome.html # The starting page with the participant ID form │ ├── index.html # The main test interface (target prompt + 7 colors) │ └── done.html # The "Test Complete" page └── README.md # This file
+├── app.py # The main Flask server and all backend logic 
+├── results.csv # (Auto-generated) The file where all data is saved 
+├── templates/ 
+│ ├── welcome.html # The starting page with the participant ID form 
+│ ├── index.html # The main test interface (target prompt + 7 colors) 
+│ └── done.html # The "Test Complete" page 
+└── README.md # This file
 
 ## Requirements
 
 The only external library required is **Flask**.
 
 You can install it using pip:
-pip install flask
 
+```
+pip install flask
+```
 
 ## How to Run
 
+```
 python app.py
+```
+
 Open your web browser and go to: http://127.0.0.1:5000
 
 ## Customizing Test Length
@@ -36,8 +47,9 @@ By default, the test runs 20 repetitions for each color/palette combination (tot
 
 For example, to run the test with only 2 reps per color (28 total trials):
 
-python app.py -r 2 or 1
-
+```
+python app.py -r 2
+```
 
 
 ## Data Output

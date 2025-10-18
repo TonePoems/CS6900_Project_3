@@ -7,7 +7,7 @@ from flask import Flask, render_template, request, redirect, url_for, session, f
 #Project Setup
 app = Flask(__name__)
 
-app.secret_key = 'your_random_secret_key_here_12345'
+app.secret_key = '3d5016a1150aeccc3838'
 
 # colors from the project
 old_colors = {
