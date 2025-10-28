@@ -20,14 +20,14 @@ old_colors = {
     "Purple": 0x7030A0
 }
 
-# colors selected by Sean
+# colors selected by Sean from need finding 2
 new_colors = {
-    "Red": 0xED1E24,
-    "Brown": 0xD4681B,
-    "Green": 0x92D050,
+    "Red": 0xE04747,
+    "Brown": 0x5A3507,
+    "Green": 0x04F994,
     "Orange": 0xFEBC02,
     "Yellow": 0xFFFF00,
-    "Blue": 0x00B0F0,
+    "Blue": 0x82EEFD,
     "Purple": 0x7030A0
 }
 
