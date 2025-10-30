@@ -1,5 +1,4 @@
 import argparse
-from ast import Mult
 import random
 import csv
 import os
@@ -51,7 +50,7 @@ class colorTest:
         # source will be 'original', 'round1', or 'round2'
         self.source = source  
 
-# --- Global variables ---
+# Global variables
 test_trials = []
 # This will be your final data file
 RESULTS_FILE = 'final_results.csv' 
@@ -66,22 +65,22 @@ def setup_trials(base_reps=4):
     reps_r1 = base_reps * 1    # 10% (e.g., 4 reps)
     reps_orig = base_reps * 3  # 30% (e.g., 12 reps)
     
-    # Add trials for the 'original' palette
+    #trials for the 'original' palette
     for key, value in original_colors.items():
         for _ in range(reps_orig):
             test_trials.append(colorTest(key, value, 'original'))
 
-    # Add trials for the 'round1' palette
+    #trials for the 'round1' palette
     for key, value in round1_colors.items():
         for _ in range(reps_r1):
             test_trials.append(colorTest(key, value, 'round1'))
             
-    # Add trials for the 'round2' palette
+    #trials for the 'round2' palette
     for key, value in round2_colors.items():
         for _ in range(reps_r2):
             test_trials.append(colorTest(key, value, 'round2'))
 
-    # Shuffle the master list to randomize the test order
+    # Shuffling the master list to randomize the test order
     random.shuffle(test_trials)
     print(f"--- Trials set up with {reps_orig} original, {reps_r1} round1, {reps_r2} round2 reps per color ---")
 
@@ -96,7 +95,7 @@ def setup_results_file():
                 "time_taken_ms", "is_correct"
             ])
 
-# --- Flask Routes ---
+# Flask Routes
 
 @app.route('/', methods=['GET', 'POST'])
 def welcome():
@@ -125,7 +124,7 @@ def show_trial():
 
     trial = test_trials[current_trial_index]
     
-    # --- NEW: Logic to pick one of the 3 palettes ---
+    # Logic to pick one of the 3 palettes
     if trial.source == 'original':
         palette_to_display = original_colors
     elif trial.source == 'round1':
