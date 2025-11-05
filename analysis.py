@@ -1,6 +1,6 @@
 import pandas as pd
 
-df = pd.read_csv('results_round_1.csv')
+df = pd.read_csv('results_round_2.csv')
 
 #print(df.to_string()) 
 
@@ -18,18 +18,18 @@ for participant in df['participant_id'].unique():
         relevant_df = df[(df['target_color_name'] == color) & (df['participant_id'] == participant)]
         samples = len(relevant_df)
         # Original Accuracy 
-        o_acc_mean = relevant_df[relevant_df['interface_source'] == 'original']['is_correct'].mean()
-        o_acc_std = relevant_df[relevant_df['interface_source'] == 'original']['is_correct'].std()
+        o_acc_mean = relevant_df[relevant_df['interface_source'] == 'round1']['is_correct'].mean()
+        o_acc_std = relevant_df[relevant_df['interface_source'] == 'round1']['is_correct'].std()
         # Original Time
-        o_time_mean = relevant_df[relevant_df['interface_source'] == 'original']['time_taken_ms'].mean()*0.001
-        o_time_std = relevant_df[relevant_df['interface_source'] == 'original']['time_taken_ms'].std()*0.001
+        o_time_mean = relevant_df[relevant_df['interface_source'] == 'round1']['time_taken_ms'].mean()*0.001
+        o_time_std = relevant_df[relevant_df['interface_source'] == 'round1']['time_taken_ms'].std()*0.001
 
         # round1 Accuracy 
-        r1_acc_mean = relevant_df[relevant_df['interface_source'] == 'round1']['is_correct'].mean()
-        r1_acc_std = relevant_df[relevant_df['interface_source'] == 'round1']['is_correct'].std()
+        r1_acc_mean = relevant_df[relevant_df['interface_source'] == 'round2']['is_correct'].mean()
+        r1_acc_std = relevant_df[relevant_df['interface_source'] == 'round2']['is_correct'].std()
         # round1 Time
-        r1_time_mean = relevant_df[relevant_df['interface_source'] == 'round1']['time_taken_ms'].mean()*0.001
-        r1_time_std = relevant_df[relevant_df['interface_source'] == 'round1']['time_taken_ms'].std()*0.001
+        r1_time_mean = relevant_df[relevant_df['interface_source'] == 'round2']['time_taken_ms'].mean()*0.001
+        r1_time_std = relevant_df[relevant_df['interface_source'] == 'round2']['time_taken_ms'].std()*0.001
 
         #print(relevant_df.to_string())
         print(f'\t{color}\t{samples}\t{o_acc_mean:.3f} +/- {o_acc_std:.3f}\t\t{o_time_mean:.2f} +/- {o_time_std:.2f}\t\t{r1_acc_mean:.3f} +/- {r1_acc_std:.3f}\t\t{r1_time_mean:.3f} +/- {r1_time_std:.3f}')
